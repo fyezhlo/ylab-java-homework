@@ -8,14 +8,16 @@ public class Guess {
         int restOfAttempts = 10;
         int randomNumber = ThreadLocalRandom
                 .current()
-                .nextInt(0,100);
+                .nextInt(1,100);
 
         Scanner scanner = new Scanner(System.in);
         int numberToCheck;
         boolean isGuessed = false;
 
+        System.out.println("Я загадал число от 1 до 99. У тебя "
+                + restOfAttempts + " попыток отгадать. \nВведи число:" );
+
         while (restOfAttempts != 0) {
-            System.out.println("введите число: ");
             numberToCheck = scanner.nextInt();
             restOfAttempts--;
 
