@@ -21,4 +21,10 @@ public class FirstHWTest {
         assertEquals(Pell.getPellNumber(31), -1);
     }
 
+    //MultTable
+    @Test
+    public void printMultTableTest() {
+        MultTable.printMultTable();
+    }
+
 }
