@@ -2,6 +2,8 @@ package com.ylab.homework.hw1;
 
 import org.junit.Test;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import static org.junit.Assert.assertEquals;
 
 public class FirstHWTest {
@@ -25,6 +27,13 @@ public class FirstHWTest {
     @Test
     public void printMultTableTest() {
         MultTable.printMultTable();
+    }
+
+    //Guess
+    @Test
+    public void guessNumberTest() {
+        int randomNumber = ThreadLocalRandom.current().nextInt(99,100);
+        System.out.println(randomNumber);
     }
 
 }
