@@ -28,8 +28,8 @@ $ $ $
 }`
 
 ●	Pell. Pell numbers Числа Пелля задаются следующим соотношением:
- 
- ![image](https://user-images.githubusercontent.com/99747059/222968900-7472c00a-1af0-4a42-89db-b081adfcd9dd.png)
+
+![image](https://user-images.githubusercontent.com/99747059/222968900-7472c00a-1af0-4a42-89db-b081adfcd9dd.png)
 
 На вход подается число n (0 <= n <= 30), необходимо распечатать n-e число Пелля
 Пример:
