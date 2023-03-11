@@ -65,7 +65,7 @@ public class SequencesImpl implements Sequences {
 
     @Override
     public void g(int n) {
-        System.out.print("g. ");
+        System.out.print("G. ");
         for (int i = 1; i <= n; i++)
             System.out.print((int)Math.pow(-1, (i+1) % 2) * i * i + ", ");
         System.out.println();
@@ -73,9 +73,14 @@ public class SequencesImpl implements Sequences {
 
     @Override
     public void h(int n) {
-        System.out.print("g. ");
-        for (int i = 1; i <= n; i++)
-            System.out.print(n + ", 0, ");
+        System.out.print("H. ");
+        int num = 1;
+        for (int i = 1; i <= n; i++){
+            if (i % 2 == 1) {
+                System.out.print(num++ + ", ");
+            } else System.out.print(0 + ", ");
+        }
+
         System.out.println();
     }
 
