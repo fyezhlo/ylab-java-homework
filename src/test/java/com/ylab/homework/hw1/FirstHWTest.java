@@ -10,7 +10,12 @@ public class FirstHWTest {
     //Stars
     @Test
     public void printFigureTest() {
-        Stars.printFigure(2, 3, "*");
+        assertEquals("", Stars.getFigure(0, 0, "*"));
+        assertEquals("\n", Stars.getFigure(1, 0, "*"));
+        assertEquals("", Stars.getFigure(0, 1, "*"));
+
+        assertEquals("*  \n", Stars.getFigure(1, 1, "*"));
+        assertEquals("*  *  *  \n*  *  *  \n", Stars.getFigure(2, 3, "*"));
     }
 
     //Pell
@@ -21,19 +26,6 @@ public class FirstHWTest {
         assertEquals(Pell.getPellNumber(5), 29);
         assertEquals(Pell.getPellNumber(-1), -1);
         assertEquals(Pell.getPellNumber(31), -1);
-    }
-
-    //MultTable
-    @Test
-    public void printMultTableTest() {
-        MultTable.printMultTable();
-    }
-
-    //Guess
-    @Test
-    public void guessNumberTest() {
-        int randomNumber = ThreadLocalRandom.current().nextInt(99,100);
-        System.out.println(randomNumber);
     }
 
 }

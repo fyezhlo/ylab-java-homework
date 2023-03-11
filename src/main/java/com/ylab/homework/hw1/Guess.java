@@ -1,18 +1,16 @@
 package com.ylab.homework.hw1;
 
+import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Guess {
-    public static void guessNumber() throws Exception{
+    public static void guessNumber() {
         int restOfAttempts = 10;
-        int randomNumber = ThreadLocalRandom
-                .current()
-                .nextInt(1,100);
+        int randomNumber = new Random().nextInt(100);
 
         Scanner scanner = new Scanner(System.in);
         int numberToCheck;
-        boolean isGuessed = false;
 
         System.out.println("Я загадал число от 1 до 99. У тебя "
                 + restOfAttempts + " попыток отгадать. \nВведи число:" );
@@ -30,22 +28,18 @@ public class Guess {
             } else {
                 System.out.println("Ты угадал с "
                         + (10 - restOfAttempts) + " попытки");
-                isGuessed = true;
                 break;
             }
 
         }
 
-        if (!isGuessed) {
+        if (restOfAttempts == 0) {
             System.out.println("Ты не угадал");
         }
+        scanner.close();
     }
 
     public static void main(String[] args) {
-        try {
-            Guess.guessNumber();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Guess.guessNumber();
     }
 }
