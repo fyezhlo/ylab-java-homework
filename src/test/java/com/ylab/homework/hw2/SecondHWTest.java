@@ -4,6 +4,8 @@ import com.ylab.homework.hw2.numbers.ComplexNumber;
 import com.ylab.homework.hw2.numbers.ComplexNumberImpl;
 import com.ylab.homework.hw2.snils.SnilsValidator;
 import com.ylab.homework.hw2.snils.SnilsValidatorImpl;
+import com.ylab.homework.hw2.stats.StatsAccumulator;
+import com.ylab.homework.hw2.stats.StatsAccumulatorImpl;
 import org.junit.Test;
 
 import java.text.DecimalFormat;
@@ -39,5 +41,20 @@ public class SecondHWTest {
         assertFalse(snilsValidator.validate("h0114404441"));
         assertFalse(snilsValidator.validate("9011440444h"));
         assertFalse(snilsValidator.validate("90114404441000000"));
+    }
+
+    @Test
+    public void statsAccumulatorTest() {
+        StatsAccumulator sa = new StatsAccumulatorImpl();
+        sa.add(1);
+        sa.add(2);
+        sa.add(3);
+        sa.add(4);
+        sa.add(5);
+
+        assertEquals(1, sa.getMin());
+        assertEquals(5, sa.getMax());
+        assertEquals(5, sa.getCount());
+        assertEquals(3.0, sa.getAvg(), 0.0001);
     }
 }

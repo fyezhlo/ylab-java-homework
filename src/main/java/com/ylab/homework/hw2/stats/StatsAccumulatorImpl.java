@@ -9,9 +9,9 @@ public class StatsAccumulatorImpl implements StatsAccumulator{
 
     public StatsAccumulatorImpl() {
         this.count = 0;
-        this.min = 0;
-        this.max = 0;
         this.sum = 0;
+        this.min = Integer.MAX_VALUE;
+        this.max = Integer.MIN_VALUE;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class StatsAccumulatorImpl implements StatsAccumulator{
     }
 
     public void setMax(int value) {
-        if (this.max > value)
+        if (this.max < value)
             this.max = value;
     }
 
