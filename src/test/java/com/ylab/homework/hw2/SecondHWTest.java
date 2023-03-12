@@ -2,12 +2,13 @@ package com.ylab.homework.hw2;
 
 import com.ylab.homework.hw2.numbers.ComplexNumber;
 import com.ylab.homework.hw2.numbers.ComplexNumberImpl;
+import com.ylab.homework.hw2.snils.SnilsValidator;
+import com.ylab.homework.hw2.snils.SnilsValidatorImpl;
 import org.junit.Test;
 
 import java.text.DecimalFormat;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SecondHWTest {
     @Test
@@ -26,5 +27,17 @@ public class SecondHWTest {
 
         DecimalFormat df = new DecimalFormat("###.###");
         assertEquals("35.698", df.format(num1.getModulus()));
+    }
+
+    @Test
+    public void snilsValidatorTest() {
+        SnilsValidator snilsValidator = new SnilsValidatorImpl();
+
+        assertTrue(snilsValidator.validate("90114404441"));
+        assertFalse(snilsValidator.validate("01468870570"));
+        assertFalse(snilsValidator.validate(""));
+        assertFalse(snilsValidator.validate("h0114404441"));
+        assertFalse(snilsValidator.validate("9011440444h"));
+        assertFalse(snilsValidator.validate("90114404441000000"));
     }
 }
