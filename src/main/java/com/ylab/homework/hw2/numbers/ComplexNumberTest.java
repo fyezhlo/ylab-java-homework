@@ -19,7 +19,7 @@ public class ComplexNumberTest {
         );
 
         System.out.println("module of " + num1 + ": " +
-                num1.getModule()
+                num1.getModulus()
         );
     }
 }

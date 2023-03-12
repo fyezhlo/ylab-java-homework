@@ -41,7 +41,7 @@ public class ComplexNumberImpl implements ComplexNumber{
     }
 
     @Override
-    public double getModule() {
+    public double getModulus() {
         return Math.sqrt(
                 this.getReal() * this.getReal()
                         +
@@ -62,7 +62,7 @@ public class ComplexNumberImpl implements ComplexNumber{
     @Override
     public String toString() {
         return getImage() == 0.0 ?
-                String.format("%.1f + i", getReal()) :
-                String.format("%.1f + i%.1f", getReal(), getImage());
+                String.format("(%.1f) + (i)", getReal()) :
+                String.format("(%.1f) + (%.1fi)", getReal(), getImage());
     }
 }
