@@ -46,6 +46,8 @@ public class SecondHWTest {
     @Test
     public void statsAccumulatorTest() {
         StatsAccumulator sa = new StatsAccumulatorImpl();
+        assertEquals(0.0, sa.getAvg(), 0.0001);
+
         sa.add(1);
         sa.add(2);
         sa.add(3);

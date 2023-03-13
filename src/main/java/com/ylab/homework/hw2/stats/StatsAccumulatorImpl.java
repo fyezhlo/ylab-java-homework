@@ -12,6 +12,7 @@ public class StatsAccumulatorImpl implements StatsAccumulator{
         this.sum = 0;
         this.min = Integer.MAX_VALUE;
         this.max = Integer.MIN_VALUE;
+        this.avg = 0.0;
     }
 
     @Override
