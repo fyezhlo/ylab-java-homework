@@ -1,9 +1,11 @@
-package com.ylab.homework.hw3;
+package com.ylab.homework.hw3.transliterator;
+
+import com.ylab.homework.hw3.transliterator.Transliterator;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class TransliteratorImpl implements Transliterator{
+public class TransliteratorImpl implements Transliterator {
 
     private final Map<Character, String> translitMap;
 
