@@ -29,16 +29,16 @@ public class OrgStructureParserImpl implements OrgStructureParser{
                 .skip(1)
                 .map(line -> line.split(COMMA_DELIMITER))
                 .map(arr -> { //Stream of arrays, each array contains values from one line in .csv file
-                    Employee employee = new Employee();
-                    employee.setId(Long.valueOf(arr[0]));
+                    Employee e = new Employee();
+                    e.setId(Long.valueOf(arr[0]));
                     if (arr[1] == ""){
-                        employee.setBossId(null);
+                        e.setBossId(null);
                     } else {
-                        employee.setBossId(Long.valueOf(arr[1]));
+                        e.setBossId(Long.valueOf(arr[1]));
                     }
-                    employee.setName(arr[2]);
-                    employee.setPosition(arr[3]);
-                    return employee;})
+                    e.setName(arr[2]);
+                    e.setPosition(arr[3]);
+                    return e;})
                 .collect(toList());
 
         for (var employee : employees) {

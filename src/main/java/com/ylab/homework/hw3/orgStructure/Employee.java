@@ -49,6 +49,7 @@ public class Employee {
         return "Employee{" +
                 "id=" + id +
                 ", bossId=" + bossId +
+                ", position=" + position +
                 ", subordinate=" + subordinate +
                 '}';
     }
