@@ -14,15 +14,18 @@ import static java.util.stream.Collectors.toList;
 public class OrgStructureParserImpl implements OrgStructureParser{
     @Override
     public Employee parseStructure(File csvFile) throws IOException {
-        Map<Employee, List<Employee>> employeeMap;
+        List<Employee> employees;
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-             employeeMap = mapEmployeesFromCsv(br, ";");
+             employees = getListOfEmployees(br, ";");
         }
-        return null;
+        return employees.stream()
+                .filter(e -> e.getBossId() == null)
+                .findAny()
+                .get();
     }
 
-    private Map<Employee, List<Employee>> mapEmployeesFromCsv(BufferedReader br, String COMMA_DELIMITER) {
-        Map<Employee, List<Employee>> employeeMap = br.lines()
+    private List<Employee> getListOfEmployees(BufferedReader br, String COMMA_DELIMITER) {
+        List<Employee> employees = br.lines()
                 .skip(1)
                 .map(line -> line.split(COMMA_DELIMITER))
                 .map(arr -> { //Stream of arrays, each array contains values from one line in .csv file
@@ -36,18 +39,23 @@ public class OrgStructureParserImpl implements OrgStructureParser{
                     employee.setName(arr[2]);
                     employee.setPosition(arr[3]);
                     return employee;})
-                .collect(
-                        groupingBy(
-                                employee -> employee.getBoss() == null ? employee : employee.getBoss()
-                        )
-                );
+                .collect(toList());
 
-        System.out.println(employeeMap);
-        for (var entry : employeeMap.entrySet()) {
+        for (var employee : employees) {
+            employee.setBoss(
+                    employees.stream()
+                            .filter(e -> e.getBossId() == employee.getBossId())
+                            .findAny()
+                            .get()
+            );
 
-            entry.getValue();
+            employee.getSubordinate().addAll(
+                    employees.stream()
+                            .filter(e -> e.getBossId() == employee.getId())
+                            .collect(toList())
+            );
         }
 
-        return employeeMap;
+        return employees;
     }
 }
