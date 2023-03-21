@@ -1,4 +1,4 @@
-package com.ylab.homework.hw3.datedmap;
+package com.ylab.homework.hw3.datedMap;
 
 import java.util.Date;
 import java.util.HashMap;

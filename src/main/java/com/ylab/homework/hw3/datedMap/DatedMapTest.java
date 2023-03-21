@@ -1,4 +1,4 @@
-package com.ylab.homework.hw3.datedmap;
+package com.ylab.homework.hw3.datedMap;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +22,7 @@ public class DatedMapTest {
         TimeUnit.SECONDS.sleep(1);
 
         System.out.println(
-                "\nnew value for 1: " + datedMap.getKeyLastInsertionDate("1")
+                "\nnew iteration with 1: " + datedMap.getKeyLastInsertionDate("1")
                 + "\ncurr time: " + new Date()
         );
     }
