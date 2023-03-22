@@ -6,7 +6,7 @@ import java.time.Instant;
 
 public class Test {
     public static void main(String[] args) throws IOException {
-        File dataFile = new Generator().generate("data.txt", 375_000_000);
+        File dataFile = new Generator().generate("data.txt", 375);
         System.out.println(new Validator(dataFile).isSorted()); // false
 
         System.out.println("start of sorting: " + Instant.now());
