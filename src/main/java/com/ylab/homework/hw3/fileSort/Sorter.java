@@ -2,6 +2,7 @@ package com.ylab.homework.hw3.fileSort;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Sorter {
     public File sortFile(File dataFile) throws IOException {
@@ -11,7 +12,7 @@ public class Sorter {
 
     public static List<File> sortInBatch(File dataFile, Comparator<String> comparator) throws IOException {
         List<File> files = new ArrayList<>();
-        long blockSize = 1000;
+        long blockSize = 1_000_000;
         /*Знаю, что так не должно быть, но если разбивать на несколько файлов, то
                 то постоянно вместо строки, при считывании, вылезает нулл,
                         буду исправлять*/
@@ -54,15 +55,15 @@ public class Sorter {
 
     public static File mergeSortedFiles(List<File> files) throws IOException {
         File outputFile = new File("sorted_data.txt");
-        PriorityQueue<BufferedReader> bufferQueue = new PriorityQueue<>(files.size(),
-                (br1, br2) -> {
+        PriorityQueue<BufferedReader> bufferQueue = new PriorityQueue<>(
+                Comparator.comparingLong(br -> {
                     try {
-                        return Long.compare(Long.parseLong(br1.readLine()), Long.parseLong(br2.readLine()));
+                        String nextLine = br.readLine();
+                        return Long.parseLong(nextLine);
                     } catch (IOException e) {
-                        System.out.println("exception in comparator");
                         throw new RuntimeException(e);
                     }
-                }
+                })
         );
 
         for (File file : files) {

@@ -44,12 +44,18 @@ public class Employee {
         return subordinate;
     }
 
+    private String getSafeBossName(Employee boss) {
+        return boss == null ? "null" : boss.getName();
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
                 ", bossId=" + bossId +
-                ", position=" + position +
+                ", name='" + name + '\'' +
+                ", position='" + position + '\'' +
+                ", boss=" + getSafeBossName(boss) +
                 ", subordinate=" + subordinate +
                 '}';
     }

@@ -44,9 +44,10 @@ public class OrgStructureParserImpl implements OrgStructureParser{
         for (var employee : employees) {
             employee.setBoss(
                     employees.stream()
+                            .filter(e -> e.getBossId() != null)
                             .filter(e -> e.getBossId() == employee.getBossId())
                             .findAny()
-                            .get()
+                            .orElse(null)
             );
 
             employee.getSubordinate().addAll(
