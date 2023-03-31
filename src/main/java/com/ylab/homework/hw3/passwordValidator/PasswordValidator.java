@@ -13,14 +13,14 @@ public class PasswordValidator {
         Pattern pattern = Pattern.compile(regex);
         if (login.length() >= 20) {
             try {
-                throw new WrongLoginExeption("Логин слишком длинный");
+                throw new WrongLoginException("Логин слишком длинный");
             } catch (Exception e) {
                 System.out.println(e.getMessage());;
             }
             return false;
         } else if (!pattern.matcher(login).matches()) {
             try {
-                throw new WrongLoginExeption("Логин содержит недопустимые символы");
+                throw new WrongLoginException("Логин содержит недопустимые символы");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -34,21 +34,21 @@ public class PasswordValidator {
         String regex = "[a-zA-Z0-9_]{0,19}";
         if (password.length() >= 20) {
             try {
-                throw new WrongPasswordExeption("Пароль слишком длинный");
+                throw new WrongPasswordException("Пароль слишком длинный");
             } catch (Exception e) {
                 System.out.println(e.getMessage());;
             }
             return false;
         } else if (!Pattern.matches(regex, password)) {
             try {
-                throw new WrongPasswordExeption("Пароль содержит недопустимые символы");
+                throw new WrongPasswordException("Пароль содержит недопустимые символы");
             } catch (Exception e) {
                 System.out.println(e.getMessage());;
             }
             return false;
         } else if (!password.equals(confirmPassword)) {
             try {
-                throw new WrongPasswordExeption("Пароль и подтверждение не совпадают");
+                throw new WrongPasswordException("Пароль и подтверждение не совпадают");
             } catch (Exception e) {
                 System.out.println(e.getMessage());;
             }
