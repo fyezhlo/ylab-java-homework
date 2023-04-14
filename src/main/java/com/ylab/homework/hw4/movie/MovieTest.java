@@ -1,4 +1,4 @@
-package io.ylab.intensive.lesson04.movie;
+package com.ylab.homework.hw4.movie;
 
 import java.io.File;
 import java.sql.SQLException;
